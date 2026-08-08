@@ -1,9 +1,11 @@
+import {useNavigate} from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -11,7 +13,10 @@ function Login() {
                 username: username,
                 password: password
             });
-            console.log(response.data);
+            const token = response.data.token;
+            localStorage.setItem("token", token);
+            navigate("/students");
+            console.log("Login Successful");
         } catch (error) {
             console.log(error);
         }
@@ -22,8 +27,7 @@ function Login() {
             <div className="row justify-content-center">
                 <div className="col-md-5">
                     <h2 className="text-center mb-4"> Student Management System </h2>
-                    <h6>React for frontend and Web API with C# for backedn</h6>
-                    <form onSubmit={handleSubmit }>
+                    <form onSubmit={handleSubmit }> 
                         <div className="mb-3">
                             <label className="form-label"> Username </label>
                             <input type="text" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -35,7 +39,6 @@ function Login() {
 
                         <button type="submit" className="btn btn-primary w-100"> Login </button>
                     </form>
-
                 </div>
             </div>
         </div>
