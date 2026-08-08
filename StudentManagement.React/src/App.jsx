@@ -1,8 +1,8 @@
-import Login from './pages/Login'
 import ProtectedRoute from './pages/ProtectedRoute'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import AddStudent from "./pages/AddStudent"
 import Students from './pages/Students'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import Login from './pages/Login'
 function App() {
 
     return (
@@ -10,13 +10,23 @@ function App() {
 
             <Routes>
 
-                <Route path="/login" element={<Login />} />
+                <Route path="/" element={
+                    <Navigate to="/login" />}
+                />
+                <Route path="/login" element={
+                    <Login />}
+                />
 
+                <Route path="/students/add" element={
+                        <ProtectedRoute>
+                            <AddStudent />
+                        </ProtectedRoute>}
+                />
                 <Route path="/students" element={
                     <ProtectedRoute>
                         <Students />
-                    </ProtectedRoute>
-                } />
+                    </ProtectedRoute>}
+                />
 
             </Routes>
 

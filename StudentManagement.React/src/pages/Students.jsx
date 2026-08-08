@@ -1,20 +1,19 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-
+import { getStudents } from "../services/studentService";
 
 function Students() {
     const [students, setStudents] = useState([]);
     useEffect(() => {
-        const getStudents = async () => {
-            const token = localStorage.getItem("token");
-            const response = await axios.get("https://localhost:7009/api/Student", {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            setStudents(response.data);
-        }
-        getStudents();
+
+        const loadStudents = async () => {
+
+            const data = await getStudents();
+
+            setStudents(data);
+        };
+
+        loadStudents();
+
     }, []);
     return (
         <>
