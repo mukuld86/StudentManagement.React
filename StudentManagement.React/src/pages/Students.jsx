@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getStudents } from "../services/studentService";
+import { useNavigate } from 'react-router-dom';
 
 function Students() {
+    const navigate = useNavigate();
     const [students, setStudents] = useState([]);
     useEffect(() => {
 
@@ -47,7 +49,9 @@ function Students() {
                                 <td>{student.course}</td>
                                 <td>{student.age}</td>
                                 <td>{student.email}</td>
-                                <td> <button>Edit </button> <button>Delete</button></td>
+                                <td>
+                                <button className="btn btn-warning btn-sm" onClick={() => navigate(`/students/edit/${student.registrationNumber}`)}>Edit</button>
+                                </td>
                             </tr>
                         ))}
 

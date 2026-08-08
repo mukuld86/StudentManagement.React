@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import AddStudent from "./pages/AddStudent"
 import Students from './pages/Students'
 import Login from './pages/Login'
+import EditStudent from "./pages/EditStudent";
+
 function App() {
 
     return (
@@ -20,7 +22,14 @@ function App() {
                 <Route path="/students/add" element={
                         <ProtectedRoute>
                             <AddStudent />
-                        </ProtectedRoute>}
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="/students/edit/:registrationNumber" element={
+                        <ProtectedRoute>
+                            <EditStudent />
+                        </ProtectedRoute>
+                    }
                 />
                 <Route path="/students" element={
                     <ProtectedRoute>

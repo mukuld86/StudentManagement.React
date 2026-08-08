@@ -14,10 +14,11 @@ function Login() {
                 password: password
             });
             const token = response.data.token;
-            localStorage.setItem("token", token);
+            sessionStorage.setItem("token", token);
             navigate("/students");
             console.log("Login Successful");
         } catch (error) {
+            alert("Invalid username or password");
             console.log(error);
         }
     }
