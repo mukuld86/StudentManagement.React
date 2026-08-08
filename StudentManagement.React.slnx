@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="StudentManagement.React/studentmanagement.react.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
