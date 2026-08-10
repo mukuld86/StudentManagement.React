@@ -4,6 +4,7 @@ import AddStudent from "./pages/AddStudent"
 import Students from './pages/Students'
 import Login from './pages/Login'
 import EditStudent from "./pages/EditStudent";
+import ProtectedLayout from "./components/ProtectedLayout";
 
 function App() {
 
@@ -20,20 +21,26 @@ function App() {
                 />
 
                 <Route path="/students/add" element={
-                        <ProtectedRoute>
+                    <ProtectedRoute>
+                        <ProtectedLayout>
                             <AddStudent />
-                        </ProtectedRoute>
+                        </ProtectedLayout>
+                    </ProtectedRoute>
                     }
                 />
                 <Route path="/students/edit/:registrationNumber" element={
-                        <ProtectedRoute>
+                    <ProtectedRoute>
+                        <ProtectedLayout>
                             <EditStudent />
+                        </ProtectedLayout>
                         </ProtectedRoute>
                     }
                 />
                 <Route path="/students" element={
                     <ProtectedRoute>
-                        <Students />
+                        <ProtectedLayout>
+                            <Students />
+                        </ProtectedLayout>
                     </ProtectedRoute>}
                 />
 

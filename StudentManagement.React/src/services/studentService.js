@@ -53,3 +53,14 @@ export const updateStudent = async (student) => {
         });
     return response.data;
 }
+
+export const deleteStudent = async (registrationNumber) => {
+    const token = sessionStorage.getItem("token");
+    await axios.delete(
+        `${API_URL}/${registrationNumber}`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+}
